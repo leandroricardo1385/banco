@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conta Bancária</title>
+</head>
+<body>
+
+  <h2>Conta Bancária</h2>
+
+  <script>
+    class ContaBancaria {
+      constructor(tipoConta, agencia) {
+        this.tipoConta = tipoConta;
+        this.agencia = agencia;
+        this.saldo = 0;
+      }
+
+      buscarSaldo() {
+        return this.saldo;
+      }
+
+      depositar(valor) {
+        if (valor > 0) {
+          this.saldo += valor;
+          console.log(`Depósito de R$ ${valor} realizado. Novo saldo: R$ ${this.saldo.toFixed(2)}`);
+        } else {
+          console.log('O valor do depósito deve ser maior que zero.');
+        }
+      }
+
+      sacar(valor) {
+        if (valor > 0 && valor <= this.saldo) {
+          this.saldo -= valor;
+          console.log(`Saque de R$ ${valor} realizado. Novo saldo: R$ ${this.saldo.toFixed(2)}`);
+        } else {
+          console.log('Saldo insuficiente ou valor de saque inválido.');
+        }
+      }
+    }
+
+    // Exemplo de uso da classe ContaBancaria
+    var minhaConta = new ContaBancaria('Corrente', '1234');
+    console.log('Saldo inicial:', minhaConta.buscarSaldo());
+
+    minhaConta.depositar(1000);
+    minhaConta.sacar(500);
+  </script>
+
+</body>
+</html>
